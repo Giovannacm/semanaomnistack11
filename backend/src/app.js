@@ -3,6 +3,8 @@ const express = require('express');
 
 const cors = require('cors');
 
+const {errors} = require('celebrate');
+
 //Importando as rotas do arquivo routes.js
 const routes = require('./routes');
 
@@ -16,5 +18,6 @@ app.use(express.json());
 
 app.use(routes);
 
-//Quando acessar localhost:3333, pelo navegador, a aplicação será executada
-app.listen(3333);
+app.use(errors());
+
+module.exports = app;
